@@ -58,46 +58,46 @@ $db = null;
 <?php endif; ?>
 <div class='row'>
     <h1 class='col-md-12 text-center border border-dark text-white bg-primary'>Members</h1>
-</div>
-<div class='row mb-3'>
-    <div class='tabel-responsive'>
+</div
+    <div class='row mb-3'>
+<div class='tabel-responsive'>
 
-        <?php if (!empty($members)) : ?>
-            <table class='table table-striped'>
-                <thead>
+    <?php if (!empty($members)) : ?>
+        <table class='table table-striped'>
+            <thead>
+                <tr>
+                    <th scope='col'>#</th>
+                    <th scope='col'>First Name</th>
+                    <th scope='col'>Last Name</th>
+                    <th scope='col'>Address</th>
+                    <th scope='col'>Tier</th>
+                    <th scope='col'>Actions</th>
+                    <th scope='col'>Active</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($members as $member) : ?>
                     <tr>
-                        <th scope='col'>#</th>
-                        <th scope='col'>First Name</th>
-                        <th scope='col'>Last Name</th>
-                        <th scope='col'>Address</th>
-                        <th scope='col'>Tier</th>
-                        <th scope='col'>Actions</th>
-                        <th scope='col'>Active</th>
+                        <td><?= $member['id'] ?></td>
+                        <td><?= htmlentities($member['first_name']) ?></td>
+                        <td><?= htmlentities($member['last_name']) ?></td>
+                        <td><?= htmlentities($member['address']) ?></td>
+                        <td><?= htmlentities($member['tier_id']) ?></td>
+                        <td>
+                            <a class='btn btn-primary' href='member-form.php?id=<?= $member['id'] ?>' role='button'>Edit</a>
+                            <a class='btn btn-danger' href='delete-member.php?id=<?= $member['id'] ?>' role='button'>Delete</a>
+                        </td>
+                        <td><?= $member['active'] ? 'Yes' : 'No' ?></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($members as $member) : ?>
-                        <tr>
-                            <td><?= $member['id'] ?></td>
-                            <td><?= htmlentities($member['first_name']) ?></td>
-                            <td><?= htmlentities($member['last_name']) ?></td>
-                            <td><?= htmlentities($member['address']) ?></td>
-                            <td><?= htmlentities($member['tier_id']) ?></td>
-                            <td>
-                                <a class='btn btn-primary' href='member-form.php?id=<?= $member['id'] ?>' role='button'>Edit</a>
-                                <a class='btn btn-danger' href='delete-member.php?id=<?= $member['id'] ?>' role='button'>Delete</a>
-                            </td>
-                            <td><?= $member['active'] ? 'Yes' : 'No' ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        <?php else : ?> <p>No members found.</p>
-        <?php endif; ?>
-    </div>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else : ?> <p>No members found.</p>
+    <?php endif; ?>
+</div>
 </div>
 <div class='row'>
-    <div class='col'>
+    <div class='col text-center'>
         <a class='btn btn-success' href='member-form.php' role='button'>Add member</a>
     </div>
 </div>

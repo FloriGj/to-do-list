@@ -1,8 +1,9 @@
+<?php require_once 'header.php' ?>
+
 <?php
 
 require_once 'functions.php';
 
-// Create a try/catch block to handle database exceptions
 try {
     // Connect to the database using the connect function
     $db = connect();
@@ -27,18 +28,16 @@ try {
     }
     echo 'Number of members fetched: ' . count($members) . '<br>';
 } catch (PDOException $e) {
-    //Echo the message if there was a database exception echo
+
     "Database error: " . $e->getMessage();
 } catch (Exception $e) {
-    // Echo the message if there was an exception
+
     echo $e->getMessage();
 }
 
-// Close the database connection here
 $db = null;
 ?>
 
-<?php require_once 'header.php' ?>
 
 <a href='index.php' class='btn btn-secondary m-2 active' role='button'>Home</a>
 <a href='tiers.php' class='btn btn-secondary m-2 active' role='button'>Tiers</a>
